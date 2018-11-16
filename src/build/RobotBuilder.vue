@@ -2,31 +2,31 @@
       <div>
     <div class="top-row">
       <div class="top part">
-        <img v-bind:src="aviableParts.heads[selectHeadIndex].src" title="head"/>
+        <img v-bind:src="selectedRobot.head.src" title="head"/>
         <button v-on:click="selectPrevHead()" class="prev-selector">&#9668;</button>
         <button v-on:click="selectNextHead()" class="next-selector">&#9658;</button>
       </div>
     </div>
     <div class="middle-row">
       <div class="left part">
-        <img v-bind:src="aviableParts.arms[selectedLeftArmIndex].src" title="left arm"/>
+        <img v-bind:src="selectedRobot.leftArm.src" title="left arm"/>
         <button v-on:click="selectPrevLeftArm()" class="prev-selector">&#9650;</button>
         <button v-on:click="selectNextLeftArm()" class="next-selector">&#9660;</button>
       </div>
       <div class="center part">
-        <img v-bind:src="aviableParts.torsos[selectedTorsoIndex].src" title="left arm"/>
+        <img v-bind:src="selectedRobot.torso.src" title="left arm"/>
         <button v-on:click="selectPrevTorso()" class="prev-selector">&#9668;</button>
         <button v-on:click="selectNextTorso()" class="next-selector">&#9658;</button>
       </div>
       <div class="right part">
-        <img v-bind:src="aviableParts.arms[selectedRightArmIndex].src" title="left arm"/>
+        <img v-bind:src="selectedRobot.rightArm.src" title="left arm"/>
         <button v-on:click="selectPrevRightArm()" class="prev-selector">&#9650;</button>
         <button v-on:click="selectNextRightArm()" class="next-selector">&#9660;</button>
       </div>
     </div>
     <div class="bottom-row">
       <div class="bottom part">
-        <img v-bind:src="aviableParts.bases[selectedBaseIndex].src" title="left arm"/>
+        <img v-bind:src="selectedRobot.base.src" title="left arm"/>
         <button v-on:click="selectPrevBase()" class="prev-selector">&#9668;</button>
         <button v-on:click="selectNextBase()" class="next-selector">&#9658;</button>
       </div>
@@ -59,6 +59,17 @@ data(){
     selectedBaseIndex:0
   
   };
+},
+computed:{
+ selectedRobot() {
+   return {
+      head: aviableParts.heads[this.selectHeadIndex],
+      leftArm :aviableParts.arms[this.selectedLeftArmIndex],
+      rightArm : aviableParts.arms[this.selectedRightArmIndex],
+      torso : aviableParts.torsos[this.selectedTorsoIndex],
+      base : aviableParts.bases[this.selectedBaseIndex],
+      };
+  },
 },
 methods:{
   selectNextHead(){
