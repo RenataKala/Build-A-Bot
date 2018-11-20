@@ -23,6 +23,7 @@ export default {
 <style scoped>
 .home{
 text-align: center;
+
 }
 .robot{
   height: 300px;
